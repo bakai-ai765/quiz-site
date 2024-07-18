@@ -9,8 +9,8 @@
             font-family: Arial, sans-serif;
         }
         .question {
-            display: none; /* Изначально скрываем все вопросы */
             margin-bottom: 20px;
+            display: none;
         }
         h3 {
             margin-bottom: 10px;
@@ -18,8 +18,15 @@
         label {
             display: block;
         }
-        .buttons {
+        .pagination {
             margin-top: 20px;
+        }
+        .pagination button {
+            margin-right: 5px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -27,12 +34,92 @@
     <div class="container">
         <h1>Тест</h1>
         <form id="quizForm">
-            <div id="quizContainer">
-                <!-- Вопросы будут добавлены динамически с помощью JavaScript -->
+            <!-- Вопросы -->
+            <div class="question" id="question1">
+                <h3>1. Аль Фараби – это …</h3>
+                <label><input type="radio" name="q1" value="a"> а) каган тюркского государства</label>
+                <label><input type="radio" name="q1" value="b"> б) видный ученый-энциклопедист, философ</label>
+                <label><input type="radio" name="q1" value="c"> в) основатель караханидского государства</label>
+                <label><input type="radio" name="q1" value="d"> г) военный полководец</label>
             </div>
-            <div class="buttons">
-                <button type="button" id="prevButton" onclick="prevQuestion()">Назад</button>
-                <button type="button" id="nextButton" onclick="nextQuestion()">Далее</button>
+
+            <div class="question" id="question2">
+                <h3>2. Видные представители средневековой тюркской культуры:</h3>
+                <label><input type="radio" name="q2" value="a"> а) Махмуд Кашгари, Юсуп Баласагун</label>
+                <label><input type="radio" name="q2" value="b"> б) Абу Саид Гардизи, Ибн Ал-Факих</label>
+                <label><input type="radio" name="q2" value="c"> в) Махмуд ибн Вали, Юсуп Баласагун</label>
+                <label><input type="radio" name="q2" value="d"> г) Махмуд Кашгари, Абу Саид Гардизи</label>
+            </div>
+
+            <div class="question" id="question3">
+                <h3>3. Какая наука изучает историю человечества по вещественным памятникам?</h3>
+                <label><input type="radio" name="q3" value="a"> а) археология</label>
+                <label><input type="radio" name="q3" value="b"> б) антропология</label>
+                <label><input type="radio" name="q3" value="c"> в) этнография</label>
+                <label><input type="radio" name="q3" value="d"> г) лингвистика</label>
+            </div>
+
+            <div class="question" id="question4">
+                <h3>4. Великий шелковый путь - это:</h3>
+                <label><input type="radio" name="q4" value="a"> а) сказочный путь в страну всеобщего счастья</label>
+                <label><input type="radio" name="q4" value="b"> б) путь, по которому древние торговцы тайно везли изделия из шелка</label>
+                <label><input type="radio" name="q4" value="c"> в) караванный путь, соединивший Китай, Среднюю Азию и Восточное Средиземноморье</label>
+                <label><input type="radio" name="q4" value="d"> г) маршрут, по которому ездили в Среднюю Азию послы китайского императора</label>
+            </div>
+
+            <div class="question" id="question5">
+                <h3>5. Абсолютная монархия – это</h3>
+                <label><input type="radio" name="q5" value="a"> а) власть парламента</label>
+                <label><input type="radio" name="q5" value="b"> б) демократическая власть</label>
+                <label><input type="radio" name="q5" value="c"> в) бесконечная власть</label>
+                <label><input type="radio" name="q5" value="d"> г) ограниченная власть</label>
+            </div>
+
+            <div class="question" id="question6">
+                <h3>6. Как называется наука, изучающая землетрясения?</h3>
+                <label><input type="radio" name="q6" value="a"> а) гляциология</label>
+                <label><input type="radio" name="q6" value="b"> б) сейсмология</label>
+                <label><input type="radio" name="q6" value="c"> в) гидрология</label>
+                <label><input type="radio" name="q6" value="d"> г) океанология</label>
+            </div>
+
+            <div class="question" id="question7">
+                <h3>7. В какой горной системе находится самая высокая вершина мира?</h3>
+                <label><input type="radio" name="q7" value="a"> а) на Памире</label>
+                <label><input type="radio" name="q7" value="b"> б) в Гималаях</label>
+                <label><input type="radio" name="q7" value="c"> в) в Гиндукуше</label>
+                <label><input type="radio" name="q7" value="d"> г) в Андах</label>
+            </div>
+
+            <div class="question" id="question8">
+                <h3>8. Как называется водная оболочка Земли?</h3>
+                <label><input type="radio" name="q8" value="a"> а) литосфера</label>
+                <label><input type="radio" name="q8" value="b"> б) биосфера</label>
+                <label><input type="radio" name="q8" value="c"> в) атмосфера</label>
+                <label><input type="radio" name="q8" value="d"> г) гидросфера</label>
+            </div>
+
+            <div class="question" id="question9">
+                <h3>9. Назовите самый большой океан?</h3>
+                <label><input type="radio" name="q9" value="a"> а) Индийский</label>
+                <label><input type="radio" name="q9" value="b"> б) Тихий</label>
+                <label><input type="radio" name="q9" value="c"> в) Атлантический</label>
+                <label><input type="radio" name="q9" value="d"> г) Северный Ледовитый</label>
+            </div>
+
+            <div class="question" id="question10">
+                <h3>10. Природное накопление осадков на вершинах гор?</h3>
+                <label><input type="radio" name="q10" value="a"> а) айсберг</label>
+                <label><input type="radio" name="q10" value="b"> б) ледник</label>
+                <label><input type="radio" name="q10" value="c"> в) снег</label>
+                <label><input type="radio" name="q10" value="d"> г) град</label>
+            </div>
+
+            <!-- Добавьте остальные вопросы аналогичным образом -->
+
+            <div class="pagination">
+                <button type="button" onclick="previousQuestion()">Предыдущий вопрос</button>
+                <button type="button" onclick="nextQuestion()">Следующий вопрос</button>
                 <button type="button" onclick="checkAnswers()">Проверить ответы</button>
             </div>
         </form>
@@ -40,42 +127,17 @@
     </div>
 
     <script>
-        const questions = [
-            {
-                question: "1. Аль Фараби – это …",
-                answers: [
-                    { option: "а) каган тюркского государства", value: "a" },
-                    { option: "б) видный ученый-энциклопедист, философ", value: "b" },
-                    { option: "в) основатель караханидского государства", value: "c" },
-                    { option: "г) военный полководец", value: "d" }
-                ],
-                correctAnswer: "b"
-            },
-            // Добавьте остальные вопросы аналогично
-        ];
-
+        const questions = document.querySelectorAll('.question');
         let currentQuestion = 0;
 
-        function initializeQuiz() {
-            const quizContainer = document.getElementById('quizContainer');
-            let quizHTML = '';
-            questions.forEach((q, index) => {
-                quizHTML += `<div class="question" id="question${index}">
-                                <h3>${q.question}</h3>`;
-                q.answers.forEach((a) => {
-                    quizHTML += `<label><input type="radio" name="q${index}" value="${a.value}">${a.option}</label>`;
-                });
-                quizHTML += `</div>`;
+        function showQuestion(index) {
+            questions.forEach((question, idx) => {
+                if (idx === index) {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
             });
-            quizContainer.innerHTML = quizHTML;
-            showQuestion(currentQuestion); // Показываем первый вопрос при инициализации
-        }
-
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
         }
 
         function nextQuestion() {
@@ -85,35 +147,80 @@
             }
         }
 
-        function showQuestion(index) {
-            const questionsDivs = document.querySelectorAll('.question');
-            questionsDivs.forEach((q, i) => {
-                q.style.display = i === index ? 'block' : 'none';
-            });
-            // Управление видимостью кнопок "Назад" и "Далее"
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            prevButton.disabled = index === 0; // Если первый вопрос, отключаем кнопку "Назад"
-            nextButton.disabled = index === questions.length - 1; // Если последний вопрос, отключаем кнопку "Далее"
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
         }
+
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'a',
+            q3: 'a',
+            q4: 'c',
+            q5: 'c',
+            q6: 'b',
+            q7: 'b',
+            q8: 'd',
+            q9: 'b',
+            q10: 'b',
+            q11: 'a',
+            q12: 'b',
+            q13: 'c',
+            q14: 'b',
+            q15: 'b',
+            q16: 'c',
+            q17: 'd',
+            q18: 'b',
+            q19: 'd',
+            q20: 'c',
+            q21: 'a',
+            q22: 'a',
+            q23: 'c',
+            q24: 'a',
+            q25: 'a',
+            q26: 'b',
+            q27: 'd',
+            q28: 'a',
+            q29: 'b',
+            q30: 'c',
+            q31: 'a',
+            q32: 'b',
+            q33: 'b',
+            q34: 'a',
+            q35: 'a',
+            q36: 'a',
+            q37: 'c',
+            q38: 'b',
+            q39: 'd',
+            q40: 'b',
+            q41: 'a',
+            q42: 'b',
+            q43: 'd',
+            q44: 'a',
+            q45: 'a',
+            q46: 'c',
+            q47: 'b',
+            q48: 'a',
+            q49: 'b',
+            q50: 'a'
+        };
 
         function checkAnswers() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
+            const formData = new FormData(document.getElementById('quizForm'));
             let score = 0;
-            questions.forEach((q, index) => {
-                const selectedAnswer = formData.get(`q${index}`);
-                if (selectedAnswer === q.correctAnswer) {
+            for (const [question, correctAnswer] of Object.entries(correctAnswers)) {
+                if (formData.get(question) === correctAnswer) {
                     score++;
                 }
-            });
+            }
             const resultDiv = document.getElementById('result');
-            resultDiv.textContent = `Ваш результат: ${score} из ${questions.length}`;
+            resultDiv.textContent = `Ваш результат: ${score} из ${Object.keys(correctAnswers).length}`;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeQuiz();
-        });
+        // Показываем первый вопрос при загрузке страницы
+        showQuestion(currentQuestion);
     </script>
 </body>
 </html>
