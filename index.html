@@ -105,3 +105,92 @@
     </script>
 </body>
 </html>
+<div class="container">
+    <h1>Тест</h1>
+    <form id="quizForm">
+        <!-- Добавляем контейнер для всех вопросов -->
+        <div id="quizContainer">
+            <!-- Вопросы будут добавлены с помощью JavaScript -->
+        </div>
+        <button type="button" id="prevButton" onclick="prevQuestion()">Назад</button>
+        <button type="button" id="nextButton" onclick="nextQuestion()">Далее</button>
+        <button type="button" onclick="checkAnswers()">Проверить ответы</button>
+    </form>
+    <div id="result"></div>
+</div>
+// Массив вопросов
+const questions = [
+    {
+        question: "1. Аль Фараби – это …",
+        answers: [
+            { option: "а) каган тюркского государства", value: "a" },
+            { option: "б) видный ученый-энциклопедист, философ", value: "b" },
+            { option: "в) основатель караханидского государства", value: "c" },
+            { option: "г) военный полководец", value: "d" }
+        ],
+        correctAnswer: "b"
+    },
+    // Добавьте остальные вопросы аналогично
+];
+
+// Глобальная переменная для отслеживания текущего вопроса
+let currentQuestion = 0;
+
+// Функция для инициализации теста
+function initializeQuiz() {
+    const quizContainer = document.getElementById('quizContainer');
+    let quizHTML = '';
+    questions.forEach((q, index) => {
+        quizHTML += `<div class="question" id="question${index}" style="display: ${index === 0 ? 'block' : 'none'};">
+                        <h3>${q.question}</h3>`;
+        q.answers.forEach((a) => {
+            quizHTML += `<label><input type="radio" name="q${index}" value="${a.value}">${a.option}</label>`;
+        });
+        quizHTML += `</div>`;
+    });
+    quizContainer.innerHTML = quizHTML;
+}
+
+// Функция для переключения на предыдущий вопрос
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+    }
+}
+
+// Функция для переключения на следующий вопрос
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+    }
+}
+
+// Функция для отображения вопроса по его индексу
+function showQuestion(index) {
+    const questionsDivs = document.querySelectorAll('.question');
+    questionsDivs.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+// Функция для проверки ответов
+function checkAnswers() {
+    const form = document.getElementById('quizForm');
+    const formData = new FormData(form);
+    let score = 0;
+    questions.forEach((q, index) => {
+        const selectedAnswer = formData.get(`q${index}`);
+        if (selectedAnswer === q.correctAnswer) {
+            score++;
+        }
+    });
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Ваш результат: ${score} из ${questions.length}`;
+}
+
+// Вызов функции для инициализации теста при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    initializeQuiz();
+});
